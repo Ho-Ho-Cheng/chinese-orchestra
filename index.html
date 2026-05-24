@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>國樂合奏曲《山河序》</title>
+  <title>國樂合奏曲《山河序》完整版</title>
 
   <style>
     * {
@@ -26,7 +26,7 @@
 
     .card {
       width: 100%;
-      max-width: 940px;
+      max-width: 960px;
       padding: 36px;
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.1);
@@ -207,7 +207,7 @@
 
 <body>
   <div class="card">
-    <h1>國樂合奏曲《山河序》</h1>
+    <h1>國樂合奏曲《山河序》完整版</h1>
 
     <p class="subtitle">
       原創國樂合奏，旋律以西洋交響曲式發展：主題、對比主題、發展部、再現部與尾聲。<br>
@@ -235,39 +235,39 @@
       <table>
         <tr>
           <th>段落</th>
-          <th>西洋形式功能</th>
-          <th>國樂配器</th>
+          <th>內容</th>
+          <th>時間感</th>
         </tr>
         <tr>
           <td>導奏</td>
-          <td>建立調性與氣氛</td>
-          <td>古箏泛音、低音拉弦、堂鼓弱奏</td>
+          <td>古箏、低音、弱鼓建立氣氛</td>
+          <td>約 0–8 秒</td>
         </tr>
         <tr>
           <td>主題 A</td>
-          <td>第一主題，雄壯有力</td>
-          <td>二胡群與笛子齊奏</td>
+          <td>二胡群與笛子呈示雄壯主題</td>
+          <td>約 8–25 秒</td>
         </tr>
         <tr>
           <td>主題 B</td>
-          <td>第二主題，抒情對比</td>
-          <td>笛子主旋律、揚琴分解音型</td>
+          <td>笛子抒情主題，揚琴與古箏伴奏</td>
+          <td>約 25–42 秒</td>
         </tr>
         <tr>
           <td>發展部</td>
-          <td>動機切分、轉調、堆疊</td>
-          <td>琵琶掃弦、打擊推進、聲部對答</td>
+          <td>琵琶、揚琴、打擊推進，主題動機變形</td>
+          <td>約 42–58 秒</td>
         </tr>
         <tr>
           <td>再現與尾聲</td>
-          <td>主題回歸並擴大</td>
-          <td>全團合奏，打擊強奏收束</td>
+          <td>全團合奏，主題回歸並強奏收束</td>
+          <td>約 58–70 秒</td>
         </tr>
       </table>
     </div>
 
     <footer>
-      此曲為原創旋律與原創和聲設計，使用 Web Audio API 即時合成。
+      使用 Web Audio API 即時合成。建議用 Chrome、Edge 或 Safari 開啟。
     </footer>
   </div>
 
@@ -278,17 +278,17 @@
     let stopTimer = null;
     let isPlaying = false;
 
-    const BPM = 112;
+    const BPM = 104;
     const beat = 60 / BPM;
     const eighth = beat / 2;
     const sixteenth = beat / 4;
 
     const notes = {
-      C2: 65.41, D2: 73.42, E2: 82.41, F2: 87.31, G2: 98.00, A2: 110.00, B2: 123.47,
-      C3: 130.81, D3: 146.83, E3: 164.81, F3: 174.61, G3: 196.00, A3: 220.00, B3: 246.94,
-      C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00, B4: 493.88,
-      C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99, A5: 880.00, B5: 987.77,
-      C6: 1046.50, D6: 1174.66, E6: 1318.51, F6: 1396.91, G6: 1567.98
+      C2: 65.41, Cs2: 69.30, D2: 73.42, Ds2: 77.78, E2: 82.41, F2: 87.31, Fs2: 92.50, G2: 98.00, Gs2: 103.83, A2: 110.00, As2: 116.54, B2: 123.47,
+      C3: 130.81, Cs3: 138.59, D3: 146.83, Ds3: 155.56, E3: 164.81, F3: 174.61, Fs3: 185.00, G3: 196.00, Gs3: 207.65, A3: 220.00, As3: 233.08, B3: 246.94,
+      C4: 261.63, Cs4: 277.18, D4: 293.66, Ds4: 311.13, E4: 329.63, F4: 349.23, Fs4: 369.99, G4: 392.00, Gs4: 415.30, A4: 440.00, As4: 466.16, B4: 493.88,
+      C5: 523.25, Cs5: 554.37, D5: 587.33, Ds5: 622.25, E5: 659.25, F5: 698.46, Fs5: 739.99, G5: 783.99, Gs5: 830.61, A5: 880.00, As5: 932.33, B5: 987.77,
+      C6: 1046.50, Cs6: 1108.73, D6: 1174.66, Ds6: 1244.51, E6: 1318.51, F6: 1396.91, Fs6: 1479.98, G6: 1567.98
     };
 
     async function setupAudio() {
@@ -299,7 +299,7 @@
       }
 
       masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0.7;
+      masterGain.gain.value = 0.76;
 
       const compressor = audioCtx.createDynamicsCompressor();
       compressor.threshold.value = -18;
@@ -333,7 +333,7 @@
       osc.frequency.setValueAtTime(freq, start);
 
       if (options.slideTo) {
-        osc.frequency.linearRampToValueAtTime(options.slideTo, start + Math.min(duration * 0.45, 0.12));
+        osc.frequency.linearRampToValueAtTime(options.slideTo, start + Math.min(duration * 0.45, 0.16));
       }
 
       if (options.detune) {
@@ -358,7 +358,7 @@
       gain.connect(masterGain);
 
       osc.start(start);
-      osc.stop(start + duration + 0.04);
+      osc.stop(start + duration + 0.08);
     }
 
     function dizi(noteName, start, duration, volume = 0.22) {
@@ -368,19 +368,19 @@
         type: "sine",
         volume,
         attack: 0.025,
-        release: 0.18,
+        release: 0.2,
         filterType: "bandpass",
-        filterFreq: 2400,
+        filterFreq: 2500,
         q: 4
       });
 
-      tone(freq * 2, start, duration * 0.9, {
+      tone(freq * 2, start, duration * 0.85, {
         type: "triangle",
         volume: volume * 0.36,
         attack: 0.018,
-        release: 0.13,
+        release: 0.15,
         filterType: "bandpass",
-        filterFreq: 3600,
+        filterFreq: 3800,
         q: 3
       });
     }
@@ -391,10 +391,10 @@
       tone(freq * 0.996, start, duration, {
         type: "sawtooth",
         volume,
-        attack: 0.07,
-        release: 0.28,
+        attack: 0.075,
+        release: 0.3,
         filterType: "bandpass",
-        filterFreq: 1200,
+        filterFreq: 1250,
         q: 2.8,
         detune: -5
       });
@@ -402,8 +402,8 @@
       tone(freq * 1.004, start, duration, {
         type: "triangle",
         volume: volume * 0.75,
-        attack: 0.08,
-        release: 0.25,
+        attack: 0.085,
+        release: 0.28,
         filterType: "bandpass",
         filterFreq: 1450,
         q: 2.5,
@@ -420,7 +420,7 @@
         attack: 0.004,
         release: 0.16,
         filterType: "highpass",
-        filterFreq: 600,
+        filterFreq: 650,
         q: 0.8
       });
 
@@ -430,7 +430,7 @@
         attack: 0.002,
         release: 0.08,
         filterType: "highpass",
-        filterFreq: 1000
+        filterFreq: 1200
       });
     }
 
@@ -463,16 +463,16 @@
         type: "triangle",
         volume,
         attack: 0.006,
-        release: 0.42,
+        release: 0.45,
         filterType: "lowpass",
-        filterFreq: 4200
+        filterFreq: 4300
       });
 
       tone(freq * 2, start + 0.018, duration * 0.6, {
         type: "sine",
         volume: volume * 0.28,
         attack: 0.004,
-        release: 0.24,
+        release: 0.26,
         filterType: "lowpass",
         filterFreq: 5000
       });
@@ -485,7 +485,7 @@
         type: "sawtooth",
         volume,
         attack: 0.08,
-        release: 0.35,
+        release: 0.38,
         filterType: "lowpass",
         filterFreq: 850
       });
@@ -500,7 +500,7 @@
       osc.frequency.exponentialRampToValueAtTime(accent ? 62 : 110, start + 0.09);
 
       gain.gain.setValueAtTime(0.0001, start);
-      gain.gain.exponentialRampToValueAtTime(accent ? 0.46 : 0.25, start + 0.006);
+      gain.gain.exponentialRampToValueAtTime(accent ? 0.48 : 0.25, start + 0.006);
       gain.gain.exponentialRampToValueAtTime(0.0001, start + (accent ? 0.48 : 0.22));
 
       osc.connect(gain);
@@ -511,7 +511,7 @@
     }
 
     function cymbal(start, volume = 0.12) {
-      const bufferSize = audioCtx.sampleRate * 0.22;
+      const bufferSize = audioCtx.sampleRate * 0.25;
       const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
       const data = buffer.getChannelData(0);
 
@@ -527,7 +527,7 @@
       filter.frequency.value = 5200;
 
       gain.gain.setValueAtTime(volume, start);
-      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.22);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.25);
 
       source.buffer = buffer;
       source.connect(filter);
@@ -535,7 +535,7 @@
       gain.connect(masterGain);
 
       source.start(start);
-      source.stop(start + 0.24);
+      source.stop(start + 0.26);
     }
 
     function playMelody(line, start, instrumentFn, volume = 0.24) {
@@ -549,7 +549,9 @@
         ["D4", "A4", "E5", "A4"],
         ["F4", "C5", "G5", "C5"],
         ["G4", "D5", "A5", "D5"],
-        ["Bb3", "F4", "C5", "F4"]
+        ["As3", "F4", "C5", "F4"],
+        ["E4", "B4", "Fs5", "B4"],
+        ["C4", "G4", "D5", "G4"]
       ];
 
       for (let bar = 0; bar < bars; bar++) {
@@ -560,30 +562,34 @@
           const t = barStart + i * eighth;
           const note = chord[i % chord.length];
 
-          if (bar % 2 === 0) {
-            yangqin(note, t, 0.22, i % 2 === 0 ? 0.13 : 0.09);
+          if ((bar + mode) % 2 === 0) {
+            yangqin(note, t, 0.24, i % 2 === 0 ? 0.13 : 0.09);
           } else {
-            pipa(note, t, 0.18, i % 2 === 0 ? 0.15 : 0.1);
+            pipa(note, t, 0.2, i % 2 === 0 ? 0.16 : 0.1);
           }
         }
       }
     }
 
-    function scheduleBassAndDrums(start, bars, roots) {
+    function scheduleBassAndDrums(start, bars, roots, intensity = 1) {
       for (let bar = 0; bar < bars; bar++) {
         const barStart = start + bar * beat * 4;
         const root = roots[bar % roots.length];
 
-        bassString(root, barStart, beat * 2.8, 0.19);
+        bassString(root, barStart, beat * 3.5, 0.18 * intensity);
 
         drum(barStart, true);
 
-        if (bar % 2 === 1) {
+        if (bar % 2 === 1 || intensity > 1.1) {
           drum(barStart + beat * 2, false);
         }
 
+        if (intensity > 1) {
+          drum(barStart + beat * 3, false);
+        }
+
         if (bar % 4 === 3) {
-          cymbal(barStart + beat * 3.5, 0.09);
+          cymbal(barStart + beat * 3.5, 0.09 * intensity);
         }
       }
     }
@@ -593,7 +599,9 @@
         ["D4", 0, 1], ["A4", 0.5, 1], ["D5", 1, 1.2],
         ["E5", 2, 1], ["A4", 2.5, 1], ["G4", 3, 1.2],
         ["C5", 4, 1], ["F5", 4.5, 1], ["D5", 5, 1.2],
-        ["G4", 6, 1], ["A4", 6.5, 1], ["D5", 7, 1.6]
+        ["G4", 6, 1], ["A4", 6.5, 1], ["D5", 7, 1.6],
+        ["F4", 8, 1], ["C5", 8.5, 1], ["F5", 9, 1.2],
+        ["E4", 10, 1], ["B4", 10.5, 1], ["E5", 11, 1.4]
       ];
 
       zheng.forEach(([n, o, d]) => {
@@ -602,7 +610,10 @@
 
       bassString("D2", start, beat * 4, 0.16);
       bassString("F2", start + beat * 4, beat * 4, 0.16);
+      bassString("E2", start + beat * 8, beat * 4, 0.16);
+
       drum(start + beat * 7.5, true);
+      cymbal(start + beat * 11.5, 0.08);
     }
 
     function scheduleMainThemeA(start) {
@@ -611,7 +622,10 @@
         ["E5",4,0.75],["D5",4.75,0.25],["C5",5,1],["D5",6,2],
 
         ["F5",8,1],["G5",9,0.5],["A5",9.5,0.5],["C6",10,1],["A5",11,1],
-        ["G5",12,0.75],["F5",12.75,0.25],["D5",13,1],["E5",14,2]
+        ["G5",12,0.75],["F5",12.75,0.25],["D5",13,1],["E5",14,2],
+
+        ["G5",16,1],["A5",17,0.5],["C6",17.5,0.5],["D6",18,1],["C6",19,1],
+        ["A5",20,0.75],["G5",20.75,0.25],["E5",21,1],["G5",22,2]
       ];
 
       playMelody(themeA, start, erhuGroup, 0.25);
@@ -620,13 +634,15 @@
         ["A5",2,0.5],["C6",2.5,0.5],["D6",3,1],
         ["G5",6,0.5],["A5",6.5,0.5],["C6",7,1],
         ["C6",10,0.5],["D6",10.5,0.5],["E6",11,1],
-        ["A5",14,0.5],["C6",14.5,0.5],["D6",15,1]
+        ["A5",14,0.5],["C6",14.5,0.5],["D6",15,1],
+        ["D6",18,0.5],["E6",18.5,0.5],["G6",19,1],
+        ["C6",22,0.5],["D6",22.5,0.5],["E6",23,1]
       ];
 
       playMelody(fluteCounter, start, dizi, 0.18);
 
-      scheduleOstinato(start, 4, 0);
-      scheduleBassAndDrums(start, 4, ["D2", "F2", "G2", "C3"]);
+      scheduleOstinato(start, 6, 0);
+      scheduleBassAndDrums(start, 6, ["D2", "F2", "G2", "C3", "E2", "A2"], 1);
     }
 
     function scheduleThemeB(start) {
@@ -635,26 +651,26 @@
         ["E5",4,1.5],["D5",5.5,0.5],["C5",6,1],["A4",7,1],
 
         ["G4",8,1.5],["A4",9.5,0.5],["C5",10,1],["D5",11,1],
-        ["F5",12,1],["E5",13,1],["C5",14,2]
+        ["F5",12,1],["E5",13,1],["C5",14,2],
+
+        ["D5",16,1.5],["F5",17.5,0.5],["G5",18,1],["A5",19,1],
+        ["C6",20,1],["A5",21,1],["G5",22,1],["F5",23,1]
       ];
 
       playMelody(themeB, start, dizi, 0.24);
 
       const innerStrings = [
         ["D4",0,2],["F4",2,2],["E4",4,2],["A4",6,2],
-        ["C4",8,2],["D4",10,2],["F4",12,2],["E4",14,2]
+        ["C4",8,2],["D4",10,2],["F4",12,2],["E4",14,2],
+        ["G4",16,2],["A4",18,2],["C5",20,2],["D5",22,2]
       ];
 
       playMelody(innerStrings, start, erhuGroup, 0.16);
-      scheduleOstinato(start, 4, 1);
-      scheduleBassAndDrums(start, 4, ["Bb2", "F2", "C3", "G2"]);
+      scheduleOstinato(start, 6, 1);
+      scheduleBassAndDrums(start, 6, ["As2", "F2", "C3", "G2", "D2", "A2"], 0.95);
     }
 
-    function scheduleDevelopment(start) {
-      /*
-        發展部：把主題 A 的「上行四度 + 級進」動機切小，
-        以不同調式區域輪替，形成西洋交響曲式的發展感。
-      */
+    function scheduleDevelopmentOne(start) {
       const fragments = [
         ["D5",0,0.5],["G5",0.5,0.5],["A5",1,0.5],["G5",1.5,0.5],
         ["F5",2,0.5],["C6",2.5,0.5],["A5",3,0.5],["F5",3.5,0.5],
@@ -662,7 +678,7 @@
         ["E5",4,0.5],["A5",4.5,0.5],["C6",5,0.5],["A5",5.5,0.5],
         ["G5",6,0.5],["D6",6.5,0.5],["C6",7,0.5],["A5",7.5,0.5],
 
-        ["Bb4",8,0.5],["F5",8.5,0.5],["G5",9,0.5],["Bb5",9.5,0.5],
+        ["As4",8,0.5],["F5",8.5,0.5],["G5",9,0.5],["As5",9.5,0.5],
         ["C5",10,0.5],["G5",10.5,0.5],["A5",11,0.5],["C6",11.5,0.5],
 
         ["D5",12,0.5],["A5",12.5,0.5],["D6",13,0.5],["C6",13.5,0.5],
@@ -671,16 +687,16 @@
 
       fragments.forEach(([n, o, d], i) => {
         const fn = i % 2 === 0 ? pipa : yangqin;
-        fn(n, start + o * beat, d * beat * 0.8, 0.17);
+        fn(n, start + o * beat, d * beat * 0.8, 0.18);
       });
 
       const longLine = [
         ["D5",0,2],["F5",2,2],["E5",4,2],["G5",6,2],
-        ["Bb4",8,2],["C5",10,2],["D5",12,2],["A5",14,2]
+        ["As4",8,2],["C5",10,2],["D5",12,2],["A5",14,2]
       ];
 
       playMelody(longLine, start, erhuGroup, 0.2);
-      scheduleBassAndDrums(start, 4, ["D2", "E2", "Bb2", "A2"]);
+      scheduleBassAndDrums(start, 4, ["D2", "E2", "As2", "A2"], 1.15);
 
       for (let bar = 0; bar < 4; bar++) {
         const t = start + bar * beat * 4;
@@ -690,51 +706,102 @@
       }
     }
 
-    function scheduleRecapAndCoda(start) {
+    function scheduleDevelopmentTwo(start) {
+      const sequence = [
+        ["G4",0,0.5],["A4",0.5,0.5],["C5",1,0.5],["D5",1.5,0.5],
+        ["A4",2,0.5],["C5",2.5,0.5],["D5",3,0.5],["F5",3.5,0.5],
+
+        ["C5",4,0.5],["D5",4.5,0.5],["F5",5,0.5],["G5",5.5,0.5],
+        ["D5",6,0.5],["F5",6.5,0.5],["G5",7,0.5],["A5",7.5,0.5],
+
+        ["F5",8,0.5],["G5",8.5,0.5],["A5",9,0.5],["C6",9.5,0.5],
+        ["G5",10,0.5],["A5",10.5,0.5],["C6",11,0.5],["D6",11.5,0.5],
+
+        ["A5",12,0.5],["C6",12.5,0.5],["D6",13,0.5],["E6",13.5,0.5],
+        ["D6",14,0.5],["C6",14.5,0.5],["A5",15,0.5],["G5",15.5,0.5]
+      ];
+
+      sequence.forEach(([n, o, d], i) => {
+        if (i % 3 === 0) {
+          dizi(n, start + o * beat, d * beat * 0.85, 0.19);
+        } else if (i % 3 === 1) {
+          pipa(n, start + o * beat, d * beat * 0.85, 0.17);
+        } else {
+          yangqin(n, start + o * beat, d * beat * 0.85, 0.15);
+        }
+      });
+
+      const counter = [
+        ["D4",0,2],["G4",2,2],["A4",4,2],["C5",6,2],
+        ["F4",8,2],["A4",10,2],["D5",12,2],["C5",14,2]
+      ];
+
+      playMelody(counter, start, erhuGroup, 0.22);
+      scheduleOstinato(start, 4, 3);
+      scheduleBassAndDrums(start, 4, ["G2", "A2", "F2", "D2"], 1.25);
+    }
+
+    function scheduleRecap(start) {
       const recap = [
         ["D5",0,1],["E5",1,0.5],["G5",1.5,0.5],["A5",2,1],["D6",3,1],
         ["C6",4,0.75],["A5",4.75,0.25],["G5",5,1],["A5",6,2],
 
         ["F5",8,1],["G5",9,0.5],["A5",9.5,0.5],["C6",10,1],["D6",11,1],
-        ["A5",12,1],["G5",13,1],["D5",14,2]
+        ["A5",12,1],["G5",13,1],["D5",14,2],
+
+        ["G5",16,1],["A5",17,0.5],["C6",17.5,0.5],["D6",18,1],["E6",19,1],
+        ["D6",20,1],["C6",21,1],["A5",22,2]
       ];
 
       playMelody(recap, start, erhuGroup, 0.28);
       playMelody(recap, start, dizi, 0.2);
 
-      scheduleOstinato(start, 4, 2);
-      scheduleBassAndDrums(start, 4, ["D2", "C3", "F2", "D2"]);
+      scheduleOstinato(start, 6, 2);
+      scheduleBassAndDrums(start, 6, ["D2", "C3", "F2", "D2", "G2", "D2"], 1.3);
+    }
 
-      const codaStart = start + beat * 16;
-
+    function scheduleCoda(start) {
       const coda = [
         ["D5",0,0.5],["E5",0.5,0.5],["G5",1,0.5],["A5",1.5,0.5],
         ["C6",2,0.5],["D6",2.5,0.5],["A5",3,0.5],["G5",3.5,0.5],
-        ["D6",4,1],["A5",5,1],["D5",6,2]
+
+        ["D6",4,0.5],["C6",4.5,0.5],["A5",5,0.5],["G5",5.5,0.5],
+        ["A5",6,0.5],["C6",6.5,0.5],["D6",7,1],
+
+        ["A5",8,1],["G5",9,1],["D5",10,2]
       ];
 
-      playMelody(coda, codaStart, dizi, 0.24);
-      playMelody(coda, codaStart, erhuGroup, 0.27);
+      playMelody(coda, start, dizi, 0.25);
+      playMelody(coda, start, erhuGroup, 0.3);
 
-      for (let i = 0; i < 8; i++) {
-        const t = codaStart + i * eighth;
-        pipa(["D4", "A4", "D5", "G5"][i % 4], t, 0.16, 0.18);
-        yangqin(["F4", "A4", "C5", "D5"][i % 4], t + sixteenth, 0.16, 0.13);
+      for (let i = 0; i < 24; i++) {
+        const t = start + i * eighth;
+        pipa(["D4", "A4", "D5", "G5"][i % 4], t, 0.17, 0.18);
+        yangqin(["F4", "A4", "C5", "D5"][i % 4], t + sixteenth, 0.17, 0.14);
       }
 
-      const finalTime = codaStart + beat * 8;
+      for (let bar = 0; bar < 3; bar++) {
+        const t = start + bar * beat * 4;
+        bassString(["D2", "G2", "D2"][bar], t, beat * 3.6, 0.25);
+        drum(t, true);
+        drum(t + beat * 2, false);
+        cymbal(t + beat * 3.5, 0.12);
+      }
+
+      const finalTime = start + beat * 12;
 
       ["D2", "D3", "A3", "D4", "F4", "A4", "D5"].forEach((n, i) => {
-        guzheng(n, finalTime + i * 0.035, beat * 3.2, 0.17);
+        guzheng(n, finalTime + i * 0.035, beat * 4.2, 0.18);
       });
 
-      erhuGroup("D5", finalTime, beat * 3.2, 0.28);
-      dizi("D6", finalTime + 0.08, beat * 2.8, 0.22);
-      bassString("D2", finalTime, beat * 3.4, 0.26);
+      erhuGroup("D5", finalTime, beat * 4.2, 0.3);
+      dizi("D6", finalTime + 0.08, beat * 3.8, 0.24);
+      bassString("D2", finalTime, beat * 4.4, 0.28);
 
       drum(finalTime, true);
-      cymbal(finalTime + beat * 0.5, 0.16);
+      cymbal(finalTime + beat * 0.5, 0.18);
       drum(finalTime + beat * 1.5, true);
+      cymbal(finalTime + beat * 2.2, 0.14);
     }
 
     async function playPiece() {
@@ -743,21 +810,38 @@
 
       isPlaying = true;
       document.getElementById("stage").classList.add("playing");
-      document.getElementById("status").textContent = "正在播放：國樂合奏曲《山河序》";
+      document.getElementById("status").textContent = "正在播放：國樂合奏曲《山河序》完整版";
 
       const start = audioCtx.currentTime + 0.25;
 
+      /*
+        時間安排：
+        BPM = 104，每拍約 0.577 秒
+        Intro 12 拍：約 6.9 秒
+        Theme A 24 拍：約 13.8 秒
+        Theme B 24 拍：約 13.8 秒
+        Development 1 16 拍：約 9.2 秒
+        Development 2 16 拍：約 9.2 秒
+        Recap 24 拍：約 13.8 秒
+        Coda 約 16 拍：約 9.2 秒
+        總長約 76 秒含尾音
+      */
+
       const introStart = start;
-      const themeAStart = introStart + beat * 8;
-      const themeBStart = themeAStart + beat * 16;
-      const devStart = themeBStart + beat * 16;
-      const recapStart = devStart + beat * 16;
+      const themeAStart = introStart + beat * 12;
+      const themeBStart = themeAStart + beat * 24;
+      const devOneStart = themeBStart + beat * 24;
+      const devTwoStart = devOneStart + beat * 16;
+      const recapStart = devTwoStart + beat * 16;
+      const codaStart = recapStart + beat * 24;
 
       scheduleIntro(introStart);
       scheduleMainThemeA(themeAStart);
       scheduleThemeB(themeBStart);
-      scheduleDevelopment(devStart);
-      scheduleRecapAndCoda(recapStart);
+      scheduleDevelopmentOne(devOneStart);
+      scheduleDevelopmentTwo(devTwoStart);
+      scheduleRecap(recapStart);
+      scheduleCoda(codaStart);
 
       stopTimer = setTimeout(() => {
         if (isPlaying) {
@@ -765,7 +849,7 @@
           document.getElementById("status").textContent = "播放結束";
           isPlaying = false;
         }
-      }, 46000);
+      }, 78000);
     }
 
     function stopPiece() {
